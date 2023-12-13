@@ -1,9 +1,9 @@
-import { Button } from "./components/Button"
+import { LoginPage } from "./pages/Login/LoginPage"
 function App() {
 
   return (
     <>
-      <Button title="Login"/>
+      <LoginPage/>
     </>
   )
 }

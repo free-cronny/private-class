@@ -1,5 +1,11 @@
-export const Button = (props) => {
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line react/prop-types
+import * as S from '../styles/styles'
+
+export const ButtonComponent = (props) => {
     return (
-        <button>{props.title}</button>
+        <div>
+            <S.Button>{props.title}</S.Button>
+        </div>
     )
 }

@@ -6,7 +6,7 @@ import { firebaseApp } from '../../utils/firebase'; // Já foi importado as conf
 
 
 
-import { Input } from "../../components/input"
+import { InputComponent } from "../../components/input"
 import BackgroundImageRight from '../../assets/images/backgroundLogin.png'
 
 import * as S from './styles'
@@ -16,20 +16,20 @@ export const LoginPage = () => {
 
     console.log(firebaseApp)
 
-    
+
     return (
         <S.Container>
             <S.ContainerLeft>
                 <h1>Bem Vindo</h1>            
-                <Input type="Email" placeholder="Insira seu Email"/>
-                <Input type="Password" placeholder="Insira sua Senha"/>
+                <InputComponent type="Email" placeholder="Insira seu Email"/>
+                <InputComponent type="Password" placeholder="Insira sua Senha"/>
                 <div style={{display: 'flex', justifyContent: 'space-around', width: '60%'}}>
                     <ButtonComponent title="Login" backgroundColor="red"/>
                     <ButtonComponent title="Cadastre-se" backgroundColor="#949090"/>
                 </div>
             </S.ContainerLeft>
             <div>
-                <img src={BackgroundImageRight} alt="" />
+                <img src={BackgroundImageRight} alt="imagem de fundo da tela de login" />
             </div>
                
 

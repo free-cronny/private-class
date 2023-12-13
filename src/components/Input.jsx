@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as S from '../styles/styles'
 
-export const Input = (props) => {
+export const InputComponent = (props) => {
     return (
         <div>
             <S.Input type={props.type} placeholder={props.placeholder}/>

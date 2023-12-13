@@ -1,14 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
+  console.log('Essa é a api usando a .env para organizar o projeto', apiKey)
+  console.log('Essa é a api usando a .env para organizar o projeto', apiUrl)
 
   return (
     <>
-      <h1>Olá mundo</h1>
+      <p>{apiKey} : {apiUrl}</p>
     </>
   )
 }

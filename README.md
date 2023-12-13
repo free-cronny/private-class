@@ -1,4 +1,4 @@
-React + Vite
+<h1 align="center"> React + Vite </h1>
 Este modelo fornece uma configuração mínima para iniciar o React no Vite com Hot Module Replacement (HMR) e algumas regras ESLint.
 
 Atualmente, dois plugins oficiais estão disponíveis:

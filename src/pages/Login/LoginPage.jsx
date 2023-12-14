@@ -22,18 +22,18 @@ export const LoginPage = () => {
         <a href="#">Esqueceu sua senha?</a>
         <S.ButtonsLog>
           <ButtonComponent
-            text="LOGIN"
-            paddingButton="0.65rem 1.65rem"
-            backgroundColor="#090A63"
-            marginButton="45px 0 0 0"
-            backgroundHover="#3F4093"
+            Text="LOGIN"
+            PaddingButton="0.65rem 1.65rem"
+            BackgroundColor="#090A63"
+            MarginButton="45px 0 0 0"
+            BackgroundHover="#3F4093"
           />
           <ButtonComponent
-            text="Cadastrar-se"
-            paddingButton="0.55rem 1.55rem"
-            backgroundColor="#706E64"
-            marginButton="15px 0 0 0"
-            backgroundHover="#D7B231"
+            Text="Cadastrar-se"
+            PaddingButton="0.55rem 1.55rem"
+            BackgroundColor="#706E64"
+            MarginButton="15px 0 0 0"
+            BackgroundHover="#D7B231"
           />
         </S.ButtonsLog>
     </S.ContainerLogin>

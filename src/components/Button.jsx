@@ -5,7 +5,7 @@ import * as S from '../styles/styles'
 export const ButtonComponent = (props) => {
     return (
         <div>
-            <S.Button backgroundHover={props.backgroundHover} marginButton={props.marginButton} paddingButton={props.paddingButton} backgroundColor={props.backgroundColor}>{props.text}</S.Button>
+            <S.Button BackgroundHover={props.BackgroundHover} MarginButton={props.MarginButton} PaddingButton={props.PaddingButton} BackgroundColor={props.BackgroundColor}>{props.Text}</S.Button>
         </div>
     )
 }

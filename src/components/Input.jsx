@@ -4,7 +4,7 @@ import * as S from '../styles/styles'
 export const InputComponent = (props) => {
     return (
         <div>
-            <S.Input type={props.type} placeholder={props.placeholder}/>
+            <S.Input onChange={props.onChange} type={props.type} placeholder={props.placeholder}/>
         </div>
     )
 }

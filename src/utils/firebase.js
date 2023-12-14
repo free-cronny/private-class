@@ -3,10 +3,10 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_API_DOMAIN,
-  projectId: "private-class-ddfa5",
-  storageBucket: "private-class-ddfa5.appspot.com",
-  messagingSenderId: "699454608493",
-  appId: "1:699454608493:web:828951a04de1d288755b64",
+  projectId: import.meta.env.VITE_API_PROJECTID,
+  storageBucket: import.meta.env.VITE_API_BUCKET,
+  messagingSenderId: import.meta.env.VITE_API_MESSAGING,
+  appId: import.meta.env.VITE_API_APPID,
 };
 
 // Inicialize o Firebase com a configuração

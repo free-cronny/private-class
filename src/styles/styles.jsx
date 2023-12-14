@@ -3,15 +3,15 @@ import styled from "styled-components";
 
 export const Input = styled.input`
     border-radius: 10px;
-    width: 24.875rem;
-    height: 3.500rem;
-    background: #102640;
+    width: 20rem;
+    height: 3.25rem;
+    background: #161688 ;
     border: 3px solid transparent;
     box-sizing: border-box;
     font-size: 1rem;
     line-height: 1.5;
     color: white;
-
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     &::placeholder {
         color: #A8A8A8;
         padding-left: 15px;
@@ -19,14 +19,21 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    padding: 1em 3em;
-    border-radius: 10px;
+    padding: ${(props) => props.paddingButton || '0.5rem 1.5rem'};
+    border-radius: 12px;
     background: ${(props) => props.backgroundColor || "#102640"}; /* Usar a prop backgroundColor ou o valor padrão */
     color: rgba(255, 255, 255, 1);
     border: none;
-    margin: 8px 0;
+    margin: ${(props) => props.marginButton || '8px 0'};
     font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    
+    &:hover{
+       background: ${(props) => props.backgroundHover || '#090A63' }
+    }
+
+    cursor: pointer;
 `;

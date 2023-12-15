@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 
 export const SidebarWrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 250px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #333;
+  background-color: #161688;
   padding-top: 20px;
 `;
 
@@ -25,11 +22,33 @@ export const SidebarMenu = styled.ul`
 
 export const SidebarMenuItem = styled.li`
   padding: 10px;
+  margin: 25px 0;
+  font-size: 18px;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
 
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
   &:hover {
     background-color: #555;
+    border-radius: 5px;
+  }
+`;
+
+export const LogoutButton = styled.button`
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #c0392b;
   }
 `;

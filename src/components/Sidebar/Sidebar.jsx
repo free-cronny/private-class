@@ -1,8 +1,10 @@
+import { getAuth, signOut } from "firebase/auth";
 import useAuthStore from "../../utils/store";
 import * as S from './styles'
+import Swal from "sweetalert2";
 
 const Sidebar = () => {
-    const {  isAuthenticated, email, setAuthenticated } = useAuthStore()
+    const { setAuthenticated } = useAuthStore()
 
     const handleLogout = () => {
     
@@ -32,9 +34,8 @@ const Sidebar = () => {
             <S.SidebarMenuItem>
                 <a href="/alunos">Alunos</a>
             </S.SidebarMenuItem>
-            {/* Adicione mais itens conforme necessário */}
             </S.SidebarMenu>
-            <button onClick={handleLogout}>Deslogar</button>
+            <S.LogoutButton onClick={handleLogout}>Deslogar</S.LogoutButton>
         </S.SidebarWrapper>
       </div>
     );

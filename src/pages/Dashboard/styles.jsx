@@ -33,3 +33,20 @@ export const SidebarMenuItem = styled.li`
     background-color: #555;
   }
 `;
+
+export const DevelopmentCard = styled.div`
+  background-color: #fff;
+  border-radius: 10px;
+  background: #706E64;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  width: 100%; /* Subtraindo a largura da barra lateral */
+`;
+
+// Estilizando o texto dentro do card
+export const CardText = styled.p`
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+`;

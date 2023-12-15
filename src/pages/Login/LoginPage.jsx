@@ -42,8 +42,6 @@ export const LoginPage = () => {
   }
 
   const auth = getAuth();
-
-  console.log(isAuthenticated)
   
 
   const createUsers = async () => {

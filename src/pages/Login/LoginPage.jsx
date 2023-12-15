@@ -1,36 +1,57 @@
+/* eslint-disable no-unused-vars */
 import { ButtonComponent } from "../../components/Button";
 import { useState } from "react";
 // import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; Implemente a logica de login a partir daqui
 
-import { firebaseApp } from "../../utils/firebase"; // Já foi importado as configurações do firebase aqui ( dados )
+// eslint-disable-next-line no-unused-vars
+import { firebaseApp } from "../../utils/firebase"; // Importação do Firebase
 
-import { InputComponent } from "../../components/input";
-import BackgroundImageRight from "../../assets/images/backgroundimagelogin.jpg";
+import { Navigate  } from 'react-router-dom';
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import * as S from "./styles";
+import { InputComponent } from "../../components/input";
+
+
+import BackgroundImageRight from "../../assets/images/backgroundimagelogin.jpg";
+
+
+
+import * as S from "./styles"; // Importação dos estilos locais (S.NOME)
+
+import useAuthStore from "../../utils/store"; // Store ( variaveis globais )
 
 export const LoginPage = () => {
-  const [email, setEmail] = useState("");
+
+
+
+  const [email, setEmail] = useState(""); // Manipulação de [variavel, função para mudar]
   const [password, setPassword] = useState("");
+
+  const { isAuthenticated, setAuthenticated } = useAuthStore(); // Puxando de dentro da store a variavel de isAuthenticated(booleano)
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
+  }
+
   const auth = getAuth();
 
+  console.log(isAuthenticated)
+  
+
   const createUsers = () => {
-
-
     createUserWithEmailAndPassword(auth, email, password)
       .then((userVerified) => {
-        const user = userVerified.user;
-        console.log("criado");
+        //Implementar um swalfire
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log("erro");
+        console.log(errorCode, errorMessage);
       });
   };
 
@@ -38,13 +59,16 @@ export const LoginPage = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userLogin) => {
-        window.location.href = './dashboard'
+        setAuthenticated(true)
         const user = userLogin.user;
-        console.log('logou')
+        console.log(user)
+        setEmail(email);
+       
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
       });
   };
 
@@ -56,7 +80,6 @@ export const LoginPage = () => {
           <InputComponent
             onChange={(event) => {
               setEmail(event.target.value);
-              console.log(email);
             }}
             type="Email"
             placeholder="Digite seu Email"
@@ -64,7 +87,6 @@ export const LoginPage = () => {
           <InputComponent
             onChange={(event) => {
                 setPassword(event.target.value)
-                console.log(password)
             }}
             type="Password"
             placeholder="Digite sua Senha"

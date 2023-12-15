@@ -7,6 +7,7 @@ import { useState } from "react";
 import { firebaseApp } from "../../utils/firebase"; // Importação do Firebase
 
 import { Navigate  } from 'react-router-dom';
+import 'animate.css';
 
 import {
   getAuth,
@@ -102,7 +103,8 @@ export const LoginPage = () => {
 
   return (
     <S.Container>
-      <S.ContainerLeft>
+      <S.ContainerLeft className="animate__animated animate__slideInLeft animate__delay-0.2s">
+
         <S.ContainerLogin>
           
           <h1>Bem - Vindo</h1>
@@ -141,7 +143,7 @@ export const LoginPage = () => {
           </S.ButtonsLog>
         </S.ContainerLogin>
       </S.ContainerLeft>
-      <S.ContainerRight>
+      <S.ContainerRight className="animate__animated animate__slideInRight animate__delay-0.2s">
         <img
           src={BackgroundImageRight}
           alt="imagem de fundo da tela de login"

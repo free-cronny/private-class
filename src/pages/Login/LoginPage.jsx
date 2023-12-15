@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ButtonComponent } from "../../components/Button";
+import ButtonComponent from "../../components/Button";
 import { useState } from "react";
 // import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; Implemente a logica de login a partir daqui
 
@@ -14,7 +14,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import { InputComponent } from "../../components/input";
+import InputComponent  from "../../components/input";
 
 
 import BackgroundImageRight from "../../assets/images/backgroundimagelogin.jpg";

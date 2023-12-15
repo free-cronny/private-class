@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line react/prop-types
-import * as S from '../styles/styles'
+import * as S from '../../styles/styles'
 
 const ButtonComponent = (props) => {
     return (

@@ -6,6 +6,8 @@ export const Dashboard = () => {
 
   const { isAuthenticated } = useAuthStore();
 
+  console.log(isAuthenticated)
+
   if(!isAuthenticated){
     return <p>Você deve estar logado para visualizar essa página</p>;
   }

@@ -1,6 +1,8 @@
 import Swal from 'sweetalert2';
 import useAuthStore from '../../utils/store';
 import { getAuth, signOut } from 'firebase/auth';
+import * as S from './styles'
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 export const Dashboard = () => {
   const {  isAuthenticated, email, setAuthenticated } = useAuthStore()
@@ -30,11 +32,7 @@ export const Dashboard = () => {
 
   return (
       <div>
-      <h1>Olá mundo</h1>
-      <h2>{email}</h2>
-      <h3>{isAuthenticated.email} : {isAuthenticated.isVerified ? 'Usuario Verificado' : 'Não verificado'}</h3>
-      <button onClick={handleLogout}>Deslogar</button>
-      {/* Restante do seu código */}
+        <Sidebar/>
     </div>
   );
 };

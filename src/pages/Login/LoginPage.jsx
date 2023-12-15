@@ -14,7 +14,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import InputComponent  from "../../components/input";
+import InputComponent from "../../components/Input";
 
 
 import BackgroundImageRight from "../../assets/images/backgroundimagelogin.jpg";

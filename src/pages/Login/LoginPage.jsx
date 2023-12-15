@@ -15,6 +15,7 @@ import {
 } from "firebase/auth";
 
 import InputComponent from "../../components/Input";
+import Loading from "../../components/Loading/loading";
 
 
 import BackgroundImageRight from "../../assets/images/backgroundimagelogin.jpg";
@@ -24,6 +25,7 @@ import BackgroundImageRight from "../../assets/images/backgroundimagelogin.jpg";
 import * as S from "./styles"; // Importação dos estilos locais (S.NOME)
 
 import useAuthStore from "../../utils/store"; // Store ( variaveis globais )
+import Swal from "sweetalert2";
 
 export const LoginPage = () => {
 
@@ -31,7 +33,7 @@ export const LoginPage = () => {
 
   const [email, setEmail] = useState(""); // Manipulação de [variavel, função para mudar]
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false)
   const { isAuthenticated, setAuthenticated } = useAuthStore(); // Puxando de dentro da store a variavel de isAuthenticated(booleano)
 
   if (isAuthenticated) {
@@ -43,39 +45,66 @@ export const LoginPage = () => {
   console.log(isAuthenticated)
   
 
-  const createUsers = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userVerified) => {
-        //Implementar um swalfire
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+  const createUsers = async () => {
+    try {
+      setLoading(true);
+      const userVerified = await createUserWithEmailAndPassword(auth, email, password);
+      Swal.fire({
+        icon: "success",
+        title: "Usuário cadastrado com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
       });
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Algo deu errado!",
+        footer: `${errorCode, errorMessage}`
+      });
+    } finally {
+      setLoading(false);
+    }
   };
+  
 
-  const loginUser = () => {
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userLogin) => {
-        setAuthenticated(true)
-        const user = userLogin.user;
-        console.log(user)
-        setEmail(email);
-       
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+  const loginUser = async () => {
+    try {
+      Swal.fire({
+        icon: "success",
+        title: "Usuário logado com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
       });
+      setLoading(true);
+      const userLogin = await signInWithEmailAndPassword(auth, email, password);
+      setAuthenticated(true);
+      const user = userLogin.user;
+      console.log(user);
+      setEmail(email);
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Algo deu errado!",
+        footer: `${errorCode, errorMessage}`
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <S.Container>
       <S.ContainerLeft>
         <S.ContainerLogin>
+          
           <h1>Bem - Vindo</h1>
           <InputComponent
             onChange={(event) => {
@@ -94,7 +123,7 @@ export const LoginPage = () => {
           <a href="#">Esqueceu sua senha?</a>
           <S.ButtonsLog>
             <ButtonComponent
-              Text="LOGIN"
+              Text={loading ? (<Loading/>) : "LOGIN"}
               PaddingButton="0.65rem 1.65rem"
               BackgroundColor="#090A63"
               MarginButton="45px 0 0 0"
@@ -102,7 +131,7 @@ export const LoginPage = () => {
               onClick={loginUser}
             />
             <ButtonComponent
-              Text="Cadastrar-se"
+              Text={loading ? (<Loading/>) : "Cadastrar-se"}
               PaddingButton="0.55rem 1.55rem"
               BackgroundColor="#706E64"
               MarginButton="15px 0 0 0"
@@ -112,12 +141,12 @@ export const LoginPage = () => {
           </S.ButtonsLog>
         </S.ContainerLogin>
       </S.ContainerLeft>
-      <div>
+      <S.ContainerRight>
         <img
           src={BackgroundImageRight}
           alt="imagem de fundo da tela de login"
         />
-      </div>
+      </S.ContainerRight>
     </S.Container>
   );
 };

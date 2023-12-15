@@ -23,6 +23,7 @@ export const ContainerLeft = styled.div`
     width: 50%;
     input {
         margin: 10px;
+        
     }
 
     h1 {        
@@ -38,6 +39,15 @@ export const ContainerLeft = styled.div`
         color: #1468CB;
 
     }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        height: 100%;
+
+        input {
+            margin: 10px 0;
+        }
+      }
 
 `
 export const ButtonsLog = styled.div`
@@ -55,4 +65,22 @@ export const ContainerLogin = styled.div`
     border-radius: 12%;
     background: white;
 
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+
+`
+
+export const ContainerRight = styled.div`
+@media (max-width: 768px) {
+    img {
+      display: none;
+    }
+  }
 `

@@ -16,6 +16,10 @@ export const Input = styled.input`
         color: #A8A8A8;
         padding-left: 15px;
     }
+
+     @media (max-width: 768px) {
+        width: 100%;
+     }
 `;
 
 export const Button = styled.button`

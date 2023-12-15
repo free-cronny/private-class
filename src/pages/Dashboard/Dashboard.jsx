@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import useAuthStore from '../../utils/store';
 import { getAuth, signOut } from 'firebase/auth';
 
@@ -8,9 +9,16 @@ export const Dashboard = () => {
 
 
   const handleLogout = () => {
+    
     setAuthenticated(false);
     const auth = getAuth();
     signOut(auth).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Usuário deslogado com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
+      });
     }).catch((error) => {
       console.log(error);
     });

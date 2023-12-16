@@ -1,4 +1,6 @@
 import { getAuth, signOut } from "firebase/auth";
+
+import logout from '../../assets/images/logout.svg'
 import useAuthStore from "../../utils/store";
 import * as S from './styles'
 import Swal from "sweetalert2";
@@ -26,7 +28,9 @@ const Sidebar = () => {
     return (
       <div>
          <S.SidebarWrapper>
-            <S.SidebarHeader>Dashboard</S.SidebarHeader>
+            <S.SidebarHeader>
+              Dashboard
+              </S.SidebarHeader>
             <S.SidebarMenu>
             <S.SidebarMenuItem>
                 <a href="/dashboard">Dashboard</a>
@@ -34,8 +38,13 @@ const Sidebar = () => {
             <S.SidebarMenuItem>
                 <a href="/alunos">Alunos</a>
             </S.SidebarMenuItem>
+              <S.SidebarMenuItem>
+                <S.LogoutButton onClick={handleLogout}>
+                  <p>Sair</p>
+                  <img src={logout} alt="Botão de Logout"/>
+                </S.LogoutButton>
+              </S.SidebarMenuItem>
             </S.SidebarMenu>
-            <S.LogoutButton onClick={handleLogout}>Deslogar</S.LogoutButton>
         </S.SidebarWrapper>
       </div>
     );

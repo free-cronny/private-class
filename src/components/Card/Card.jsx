@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as S from "./Style";
 
 import imageIconCard from '../../assets/images/icon.png'

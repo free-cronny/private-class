@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 export const ContainerMain = styled.div`
 
-    background-color: #161688;
+    background-color: #fff;
+    color: #000;
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    width: 20.833rem;
+    width: 17.833rem;
     height: 8.082rem;
+    padding: 15px;
+    text-align: center;
     margin-left: 5%;
     align-items: center;
     border-radius: 25px;
@@ -21,7 +24,8 @@ export const ContainerTexts = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    color: #fff;
+    color: #000;
+    font-family: Syncopate;
     font-weight: bold;
     height: 100%;
     justify-content: space-evenly;

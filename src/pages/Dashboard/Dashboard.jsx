@@ -83,12 +83,9 @@ export const Dashboard = () => {
     },
   ];
   return (
-    <div style={{ display: "flex" }}>
+    <S.Container style={{ display: "flex", height: '80vh' }}>
       <Sidebar />
       <div>
-        <S.DevelopmentCard>
-          <S.CardText>Tela em Desenvolvimento</S.CardText>
-        </S.DevelopmentCard>
         <S.ContainerCards>
           {pessoas.map((pessoa) => {
             return (
@@ -101,6 +98,6 @@ export const Dashboard = () => {
           })}
         </S.ContainerCards>
       </div>
-    </div>
+    </S.Container>
   );
 };

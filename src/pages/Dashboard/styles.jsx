@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  widht: 100%;
+  height: 100%;
+`
+
 export const SidebarWrapper = styled.div`
   height: 100%;
   width: 250px;
@@ -58,8 +63,33 @@ export const ContainerCards = styled.div`
 
     display: flex;
     flex-wrap:wrap;
-    height: 600px;
-    overflow-y: auto;
+    max-height: 110%;
+    overflow: auto;
     width: 100%;
+    margin-top: 5%;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      width: 12px; /* Largura da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background-color: #555; /* Cor do indicador da barra de rolagem */
+      border-radius: 15px;
+  }
+
+  &::-webkit-scrollbar-track {
+      background-color: #f5f5f5; /* Cor do fundo da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-corner {
+      background-color: transparent; /* Cor do canto da barra de rolagem (canto inferior direito) */
+  }
+
+  &:hover {
+      &::-webkit-scrollbar-thumb {
+          background-color: #FFC200; /* Cor do indicador da barra de rolagem ao passar o mouse */
+      }
+  }
 
 `

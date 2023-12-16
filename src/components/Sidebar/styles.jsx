@@ -5,13 +5,17 @@ export const SidebarWrapper = styled.div`
   width: 250px;
   background-color: #161688;
   padding-top: 20px;
+  font-weight: 700;
 `;
 
 export const SidebarHeader = styled.div`
   text-align: center;
   color: #fff;
   font-size: 1.5rem;
+  display: flex;
   margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SidebarMenu = styled.ul`
@@ -22,8 +26,9 @@ export const SidebarMenu = styled.ul`
 
 export const SidebarMenuItem = styled.li`
   padding: 10px;
-  margin: 25px 0;
+  margin: 66px 0;
   font-size: 18px;
+  font-weight: 700;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -34,21 +39,29 @@ export const SidebarMenuItem = styled.li`
   }
 
   &:hover {
-    background-color: #555;
+    background-color: #fff;
+    
     border-radius: 5px;
+
+    a {
+      color: #161688;
+    }
   }
 `;
 
-export const LogoutButton = styled.button`
-  background-color: #e74c3c;
+export const LogoutButton = styled.div`
+  display: flex;
   color: #fff;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
 
-  &:hover {
-    background-color: #c0392b;
+  cursor: pointer;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    margin-left: 15px;
   }
 `;

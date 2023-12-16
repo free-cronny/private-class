@@ -32,6 +32,8 @@ export const SidebarMenuItem = styled.li`
   &:hover {
     background-color: #555;
   }
+
+  overflow-x: hidden;
 `;
 
 export const DevelopmentCard = styled.div`
@@ -42,6 +44,7 @@ export const DevelopmentCard = styled.div`
   padding: 20px;
   margin: 20px;
   width: 100%; /* Subtraindo a largura da barra lateral */
+  
 `;
 
 // Estilizando o texto dentro do card
@@ -50,3 +53,13 @@ export const CardText = styled.p`
   color: #fff;
   text-align: center;
 `;
+
+export const ContainerCards = styled.div`
+
+    display: flex;
+    flex-wrap:wrap;
+    height: 600px;
+    overflow-y: auto;
+    width: 100%;
+
+`

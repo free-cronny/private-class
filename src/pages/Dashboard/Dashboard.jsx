@@ -80,7 +80,10 @@ export const Dashboard = () => {
     },{
       nome: "Igor",
       description: "Professor",
-    },
+    },{
+      nome: "Igor",
+      description: "Professor",
+    }
   ];
   return (
     <S.Container style={{ display: "flex", height: '80vh' }}>

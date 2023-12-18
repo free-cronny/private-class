@@ -93,3 +93,8 @@ export const ContainerCards = styled.div`
   }
 
 `
+
+export const BurgerIcon = styled.img`
+  width: 30px;
+  height: 30px;
+`

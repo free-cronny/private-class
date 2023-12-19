@@ -6,12 +6,13 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { firebaseApp } from "../../utils/firebase"; // Importação do Firebase
 
-import { Navigate  } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import InputComponent from "../../components/Input/Input";
@@ -41,7 +42,7 @@ export const LoginPage = () => {
   }
 
   const auth = getAuth();
-  
+
 
   const createUsers = async () => {
     try {
@@ -67,7 +68,17 @@ export const LoginPage = () => {
       setLoading(false);
     }
   };
+
+  const handleForgotPassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        Alert.alert('Enviamos um email para você');
+      })
+      .catch(error => console.log(error));
+    console.log('FUNCIONOU ESSA PORRA');
+  };
   
+
 
   const loginUser = async () => {
     try {
@@ -103,7 +114,7 @@ export const LoginPage = () => {
       <S.ContainerLeft>
 
         <S.ContainerLogin>
-          
+
           <h1>Bem - Vindo</h1>
           <InputComponent
             onChange={(event) => {
@@ -114,15 +125,15 @@ export const LoginPage = () => {
           />
           <InputComponent
             onChange={(event) => {
-                setPassword(event.target.value)
+              setPassword(event.target.value)
             }}
             type="Password"
             placeholder="Digite sua Senha"
           />
-          <a href="#">Esqueceu sua senha?</a>
+          <button onClick={handleForgotPassword}>Esqueceu sua senha?</button>
           <S.ButtonsLog>
             <ButtonComponent
-              Text={loading ? (<Loading/>) : "LOGIN"}
+              Text={loading ? (<Loading />) : "LOGIN"}
               PaddingButton="0.65rem 1.65rem"
               BackgroundColor="#090A63"
               MarginButton="45px 0 0 0"
@@ -130,7 +141,7 @@ export const LoginPage = () => {
               onClick={loginUser}
             />
             <ButtonComponent
-              Text={loading ? (<Loading/>) : "Cadastrar-se"}
+              Text={loading ? (<Loading />) : "Cadastrar-se"}
               PaddingButton="0.55rem 1.55rem"
               BackgroundColor="#706E64"
               MarginButton="15px 0 0 0"

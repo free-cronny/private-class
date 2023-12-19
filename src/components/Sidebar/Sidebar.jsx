@@ -29,7 +29,7 @@ const Sidebar = () => {
       <div>
          <S.SidebarWrapper>
             <S.SidebarHeader>
-              Dashboard
+              Kyops
               </S.SidebarHeader>
             <S.SidebarMenu>
             <S.SidebarMenuItem>

@@ -17,6 +17,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 
+import SelectComponent from '../../components/Select/Select'
 import InputComponent from "../../components/Input/Input";
 import Loading from "../../components/Loading/loading";
 
@@ -36,8 +37,16 @@ export const LoginPage = () => {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState(""); // Manipulação de [variavel, função para mudar]
   const [password, setPassword] = useState("");
+  const [selectedTypeUser, setSelectedTypeUser] = useState(true);
+
+  
   const [loading, setLoading] = useState(false)
   const { isAuthenticated, setAuthenticated } = useAuthStore(); // Puxando de dentro da store a variavel de isAuthenticated(booleano)
+
+  const options = [
+    { value: true, label: 'Estudante' },
+    { value: false, label: 'Professor' },
+  ];
 
   if (isAuthenticated) {
     return <Navigate to="/Home" />;
@@ -63,7 +72,7 @@ export const LoginPage = () => {
         id: 0,
         email: userVerified.user.email,
         name: nickname,
-        isStudent: true,
+        isStudent: selectedTypeUser,
       });
     } catch (error) {
       const errorCode = error.code;
@@ -155,6 +164,15 @@ export const LoginPage = () => {
             type="Password"
             placeholder="Digite sua Senha"
           />
+
+<SelectComponent
+        onChange={(e) => setSelectedTypeUser(e.target.value)}
+        type="select"
+        placeholder="Selecione uma opção"
+        value={selectedTypeUser}
+        options={options}
+      />
+          
           <p style={{color: 'blue', cursor: 'pointer'}} onClick={handleForgotPassword}>Esqueceu sua senha?</p>
           <S.ButtonsLog>
             <ButtonComponent

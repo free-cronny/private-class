@@ -66,9 +66,9 @@ export const Home = () => {
             return (
               <Card key={index} 
               studentName={email.name}
-               description={email.isStudent ? "Aluno" : "Professor"}
-                background={email.isStudent ? '#fff' : '#161688'}
-                colorTexts={email.isStudent ? '#000' : '#fff'}
+               description={email.isStudent == true ? "Aluno" : "Professor"}
+                background={email.isStudent == true ? '#fff' : '#161688'}
+                colorTexts={email.isStudent == true ? '#000' : '#fff'}
               />
             )
           })}          

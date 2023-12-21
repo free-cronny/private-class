@@ -64,8 +64,12 @@ export const Dashboard = () => {
         <S.ContainerCards>
           {userEmails.map((email, index) => {
             return (
-              <Card key={index} studentName={email.name} description="Aluno" />
-
+              <Card key={index} 
+              studentName={email.name}
+               description={email.isStudent ? "Aluno" : "Professor"}
+                background={email.isStudent ? '#fff' : '#161688'}
+                colorTexts={email.isStudent ? '#000' : '#fff'}
+              />
             )
           })}          
         </S.ContainerCards>

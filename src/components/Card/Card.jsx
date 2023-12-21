@@ -9,6 +9,7 @@ export const Card = (props) => {
       <img src={imageIconCard} alt="icone" />
       <S.ContainerTexts>
       <h2>{props.studentName}</h2>
+      <hr />
       <p>{props.description}</p>
       </S.ContainerTexts>
     </S.ContainerMain>

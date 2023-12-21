@@ -15,6 +15,7 @@ export const ContainerMain = styled.div`
     align-items: center;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: transform 0.3s; // Adicionando uma transição suave
 
     hr {
         width: 90%;
@@ -26,6 +27,11 @@ export const ContainerMain = styled.div`
         width: 50px;
         height: 50px;
     }
+
+    &:hover {
+        cursor: pointer;
+    transform: scale(1.05); // Faz o card crescer um pouco ao passar o mouse
+  }
 
 `
 

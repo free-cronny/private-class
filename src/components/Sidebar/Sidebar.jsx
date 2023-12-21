@@ -50,9 +50,7 @@ const Sidebar = () => {
   };
 
   const [activeRoute, setActiveRoute] = useState(getCurrentRoute()); // Estado para controlar a rota ativa
-
-  console.log(getCurrentRoute())
-
+  
   useEffect(() => {
     const handleRouteChange = () => {
       // Atualiza o estado com a rota atual

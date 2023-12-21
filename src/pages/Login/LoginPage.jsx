@@ -6,6 +6,8 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { firebaseApp } from "../../utils/firebase"; // Importação do Firebase
 
+import { getDatabase, ref, set } from "firebase/database";
+
 import { Navigate } from 'react-router-dom';
 
 import {
@@ -31,7 +33,7 @@ import Swal from "sweetalert2";
 export const LoginPage = () => {
 
 
-
+  const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState(""); // Manipulação de [variavel, função para mudar]
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false)
@@ -53,6 +55,15 @@ export const LoginPage = () => {
         title: "Usuário cadastrado com sucesso!",
         showConfirmButton: false,
         timer: 1500
+      });
+      // Adiciona informações adicionais no Realtime Database
+      const db = getDatabase();
+      const userRef = ref(db, `users/${userVerified.user.uid}`);
+      set(userRef, {
+        id: 0,
+        email: userVerified.user.email,
+        name: nickname,
+        isStudent: true,
       });
     } catch (error) {
       const errorCode = error.code;
@@ -131,6 +142,11 @@ export const LoginPage = () => {
             }}
             type="Email"
             placeholder="Digite seu Email"
+          />
+          <InputComponent
+            onChange={(event) => setNickname(event.target.value)} // Adicione isso
+            type="text" // Use o tipo "text" para o campo de nickname
+            placeholder="Digite seu Nickname"
           />
           <InputComponent
             onChange={(event) => {

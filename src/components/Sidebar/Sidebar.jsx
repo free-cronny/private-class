@@ -88,7 +88,7 @@ const Sidebar = () => {
     {
       id: 0,
       name: "Home",
-      route: "/Home",
+      route: "/home",
       icon: <FiHome />,
     },
     {

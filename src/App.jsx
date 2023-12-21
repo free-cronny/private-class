@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>      
       <Routes>
           <Route path="/" element={<LoginPage/>}/>
-          <Route path="/Home" element={isAuthenticated ? <Home/> : <LoginPage/>}/>
+          <Route path="/home" element={isAuthenticated ? <Home/> : <LoginPage/>}/>
           {/*Se existem informações de usuario => home : loginpage */}
           <Route path="*" element={<NotFound />} />
       </Routes>

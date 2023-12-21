@@ -9,7 +9,7 @@ import { FiMenu } from 'react-icons/fi'
 import { useMediaQuery } from "@mui/material"; // Importação do MediaQuery, biblioteca
 import { getDatabase, ref, onValue } from "firebase/database";
 
-export const Dashboard = () => {
+export const Home = () => {
   const isOnDesktop = useMediaQuery('(min-width:600px)');
   const { isAuthenticated } = useAuthStore();
   const [sidebarOpen, setSidebarOpen] = useState(true);

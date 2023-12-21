@@ -40,7 +40,7 @@ export const LoginPage = () => {
   const { isAuthenticated, setAuthenticated } = useAuthStore(); // Puxando de dentro da store a variavel de isAuthenticated(booleano)
 
   if (isAuthenticated) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/Home" />;
   }
 
   const auth = getAuth();

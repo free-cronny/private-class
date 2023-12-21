@@ -74,9 +74,18 @@ export const LoginPage = () => {
       .then(() => {
         Swal.fire("Enviamos uma mensagem de recuperação em seu Email!");
       })
-      .catch(error => console.log(error));
-    console.log('FUNCIONOU ESSA PORRA');
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Algo deu errado!",
+          footer: `${errorCode}, ${errorMessage}`
+        });
+      });
   };
+  
   
 
 
@@ -130,7 +139,7 @@ export const LoginPage = () => {
             type="Password"
             placeholder="Digite sua Senha"
           />
-          <button onClick={handleForgotPassword}>Esqueceu sua senha?</button>
+          <p style={{color: 'blue', cursor: 'pointer'}} onClick={handleForgotPassword}>Esqueceu sua senha?</p>
           <S.ButtonsLog>
             <ButtonComponent
               Text={loading ? (<Loading />) : "LOGIN"}

@@ -33,6 +33,15 @@ export const ContainerMain = styled.div`
     transform: scale(1.05); // Faz o card crescer um pouco ao passar o mouse
   }
 
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height:  7.082rem;
+    margin-top: 30px;
+  }
+
+
 `
 
 export const ContainerTexts = styled.div`

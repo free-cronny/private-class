@@ -72,7 +72,7 @@ export const LoginPage = () => {
   const handleForgotPassword = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        Alert.alert('Enviamos um email para você');
+        Swal.fire("Enviamos uma mensagem de recuperação em seu Email!");
       })
       .catch(error => console.log(error));
     console.log('FUNCIONOU ESSA PORRA');

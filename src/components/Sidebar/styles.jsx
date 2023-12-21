@@ -4,12 +4,13 @@ export const SidebarWrapper = styled.div`
   height: 100vh;
   width: 250px;
   background-color: #161688;
-  padding-top: 20px;
+  padding-top: 50px;
   font-weight: 700;
 `;
 
 export const SidebarHeader = styled.div`
   text-align: center;
+  letter-spacing: 1em;
   color: #fff;
   font-size: 1.5rem;
   display: flex;
@@ -21,12 +22,12 @@ export const SidebarHeader = styled.div`
 export const SidebarMenu = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-top: 40px;
 `;
 
 export const SidebarMenuItem = styled.li`
   padding: 10px;
-  margin: 66px 0;
+  margin: 20px 0;
   font-size: 18px;
   font-weight: 700;
   color: #fff;

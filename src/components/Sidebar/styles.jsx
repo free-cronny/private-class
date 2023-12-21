@@ -9,14 +9,23 @@ export const SidebarWrapper = styled.div`
 `;
 
 export const SidebarHeader = styled.div`
+display: flex;
+flex-direction: column;
   text-align: center;
-  letter-spacing: 1em;
   color: #fff;
   font-size: 1.5rem;
   display: flex;
   margin-bottom: 20px;
   justify-content: center;
   align-items: center;
+
+  p {
+    letter-spacing: 1em;
+  }
+
+  span {
+    color: #fff;
+  }
 `;
 
 export const SidebarMenu = styled.ul`

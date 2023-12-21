@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react"; // Importe o useState
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import {
   FiHome,
   FiUsers,
-  FiUser,
   FiLogOut,
 } from "react-icons/fi"; // Importe os ícones necessários
 import { BsChatDotsFill } from "react-icons/bs";
@@ -12,8 +11,26 @@ import useAuthStore from "../../utils/store";
 import * as S from "./styles";
 import Swal from "sweetalert2";
 
+
+import { getDatabase, ref, get } from "firebase/database";
+
 const Sidebar = () => {
-  const { setAuthenticated } = useAuthStore();
+  const { user, setAuthenticated } = useAuthStore();
+
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setAuthenticated(Boolean(user));
+    });
+
+    return () => unsubscribe();
+  }, [auth, setAuthenticated]);
+
+  useEffect(() => {
+    const uidDoUsuario = user.uid;
+    fetchUserData(uidDoUsuario);
+  }, [])
 
   const handleLogout = () => {
     setAuthenticated(false);
@@ -50,6 +67,7 @@ const Sidebar = () => {
   };
 
   const [activeRoute, setActiveRoute] = useState(getCurrentRoute()); // Estado para controlar a rota ativa
+  const [userLoggedInfo, setUserLoggedInfo] = useState(null)
   
   useEffect(() => {
     const handleRouteChange = () => {
@@ -75,30 +93,24 @@ const Sidebar = () => {
     },
     {
       id: 1,
-      name: "Alunos",
-      route: "/alunos",
+      name: "Usuarios",
+      route: "/usuarios",
       icon: <FiUsers />,
     },
     {
       id: 2,
-      name: "Professores",
-      route: "/professores",
-      icon: <FiUser />,
-    },
-    {
-      id: 3,
       name: "Mensagens",
       route: "/mensagens",
       icon: <BsChatDotsFill />,
     },
     {
-      id: 4,
+      id: 3,
       name: "Fale Conosco",
       route: "/contato",
       icon: <MdOutlineEmail />,
     },
     {
-      id: 5,
+      id: 4,
       name: "Sair",
       route: "/",
       icon: <FiLogOut />,
@@ -107,10 +119,39 @@ const Sidebar = () => {
     // Adicione mais rotas conforme necessário
   ];
 
+  const fetchUserData = async (uid) => {
+    const db = getDatabase();
+    const userRef = ref(db, `users/${uid}`);
+  
+    try {
+      const snapshot = await get(userRef);
+  
+      if (snapshot.exists()) {
+        const userData = snapshot.val();
+        setUserLoggedInfo(userData)
+        console.log("Informações do usuário:", userData);
+        return userData;
+      } else {
+        console.log("Usuário não encontrado");
+        return null;
+      }
+    } catch (error) {
+      console.error("Erro ao buscar informações do usuário:", error);
+      // Trate o erro conforme necessário
+      return null;
+    }
+  };
+
+
+  
+
   return (
     <div>
       <S.SidebarWrapper>
-        <S.SidebarHeader>Kyops</S.SidebarHeader>
+        <S.SidebarHeader>
+         <p>Kyops</p> 
+         <span style={{marginTop: 15}}>Bem vindo(a): {user && userLoggedInfo ? userLoggedInfo.name : 'Usuário'}</span>
+        </S.SidebarHeader>
         <S.SidebarMenu>
           {routes.map((route) => (
             <S.SidebarMenuItem

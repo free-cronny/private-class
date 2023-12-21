@@ -1,12 +1,10 @@
+import { useEffect, useState } from "react";
 import * as S from "./styles";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import useAuthStore from "../../utils/store";
 import { Card } from "../../components/Card/Card";
-import { useEffect, useState } from "react";
-
 import { FiMenu } from 'react-icons/fi'
-
-import { useMediaQuery } from "@mui/material"; // Importação do MediaQuery, biblioteca
+import { useMediaQuery } from "@mui/material";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 export const Home = () => {
@@ -46,6 +44,8 @@ export const Home = () => {
     }
   }, [isAuthenticated]);
 
+  console.log(isAuthenticated)
+
   if (!isAuthenticated) {
     return <p>Você deve estar logado para visualizar essa página</p>;
   }
@@ -62,16 +62,15 @@ export const Home = () => {
 
       <div>
         <S.ContainerCards>
-          {userEmails.map((email, index) => {
-            return (
-              <Card key={index} 
-              studentName={email.name}
-               description={email.isStudent == true ? "Aluno" : "Professor"}
-                background={email.isStudent == true ? '#fff' : '#161688'}
-                colorTexts={email.isStudent == true ? '#000' : '#fff'}
-              />
-            )
-          })}          
+          {userEmails.map((user, index) => (
+            <Card
+              key={index}
+              studentName={user.name}
+              description={user.isStudent == true ? "Aluno" : "Professor"}
+              background={user.isStudent == true ? '#fff' : '#161688'}
+              colorTexts={user.isStudent == true ? '#000' : '#fff'}
+            />
+          ))}
         </S.ContainerCards>
       </div>
     </S.Container>

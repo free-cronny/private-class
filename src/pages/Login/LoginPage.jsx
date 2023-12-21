@@ -39,7 +39,7 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [selectedTypeUser, setSelectedTypeUser] = useState(true);
 
-  
+
   const [loading, setLoading] = useState(false)
   const { isAuthenticated, setAuthenticated } = useAuthStore(); // Puxando de dentro da store a variavel de isAuthenticated(booleano)
 
@@ -73,6 +73,7 @@ export const LoginPage = () => {
         email: userVerified.user.email,
         name: nickname,
         isStudent: selectedTypeUser,
+        messages: []
       });
     } catch (error) {
       const errorCode = error.code;

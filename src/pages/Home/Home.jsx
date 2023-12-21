@@ -66,7 +66,7 @@ export const Home = () => {
             <Card
               key={index}
               studentName={user.name}
-              description={user.isStudent == true ? "Aluno" : "Professor"}
+              description={user.isStudent == true ? "Aluno(a)" : "Professor(a)"}
               background={user.isStudent == true ? '#fff' : '#161688'}
               colorTexts={user.isStudent == true ? '#000' : '#fff'}
             />

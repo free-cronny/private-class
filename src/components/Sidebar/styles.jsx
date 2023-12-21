@@ -33,6 +33,7 @@ export const SidebarMenuItem = styled.li`
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
+  
 
   a {
     color: #fff;

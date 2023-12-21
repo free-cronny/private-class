@@ -7,8 +7,8 @@ export const ContainerMain = styled.div`
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    width: 17.833rem;
-    height: 8.082rem;
+    width: 14.833rem;
+    height: 5.082rem;
     padding: 15px;
     text-align: center;
     margin-left: 5%;
@@ -16,6 +16,17 @@ export const ContainerMain = styled.div`
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     margin-top: 10px;
+
+    hr {
+        width: 90%;
+        border-bottom: 1px solid #161688;
+        
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
 
 `
 
@@ -28,6 +39,7 @@ export const ContainerTexts = styled.div`
     font-family: Syncopate;
     font-weight: bold;
     height: 100%;
+    width: 100%;
     justify-content: space-evenly;
     
 

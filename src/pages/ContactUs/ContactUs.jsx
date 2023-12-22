@@ -13,7 +13,7 @@ import { TextArea } from '../../styles/styles';
 
 
 
-const waSendMessage = () => {
+const ContactUs = () => {
 
     const [userEmails, setUserEmails] = useState([]);
     const { isAuthenticated } = useAuthStore();
@@ -126,4 +126,4 @@ const waSendMessage = () => {
 
 }
 
-export default waSendMessage;
+export default ContactUs;

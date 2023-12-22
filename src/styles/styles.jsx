@@ -38,11 +38,11 @@ export const Button = styled.button`
     border-radius: 12px;
     background: ${(props) => props.BackgroundColor || "#102640"}; /* Usar a prop backgroundColor ou o valor padrão */
     color: rgba(255, 255, 255, 1);
-    border: none;
+    border: ${(props) => props.Border || 'none'};
     margin: ${(props) => props.MarginButton || '8px 0'};
     font-size: 1.2rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     line-height: normal;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   

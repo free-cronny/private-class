@@ -5,7 +5,7 @@ import * as S from '../../styles/styles'
 const ButtonComponent = (props) => {
     return (
         <div>
-            <S.Button onClick={props.onClick} BackgroundHover={props.BackgroundHover} MarginButton={props.MarginButton} PaddingButton={props.PaddingButton} BackgroundColor={props.BackgroundColor}>{props.Text}</S.Button>
+            <S.Button onClick={props.onClick} Border={props.Border} BackgroundHover={props.BackgroundHover} MarginButton={props.MarginButton} PaddingButton={props.PaddingButton} BackgroundColor={props.BackgroundColor}>{props.Text}</S.Button>
         </div>
     )
 }

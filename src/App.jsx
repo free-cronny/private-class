@@ -2,7 +2,7 @@ import { LoginPage } from "./pages/Login/LoginPage"
 import { Home } from "./pages/Home/Home"
 import {NotFound} from "./pages/NotFound/NotFound"
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import ContactUs from "./pages/ContactUs/ContactUs"
+import {ContactUs} from "./pages/ContactUs/ContactUs"
 import useAuthStore from "./utils/store";
 function App() {
   

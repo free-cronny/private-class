@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect } from 'react';
 import * as S from './styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -13,7 +12,7 @@ import { TextArea } from '../../styles/styles';
 
 
 
-const ContactUs = () => {
+export const ContactUs = () => {
 
     const [userEmails, setUserEmails] = useState([]);
     const { isAuthenticated } = useAuthStore();
@@ -125,5 +124,3 @@ const ContactUs = () => {
     )
 
 }
-
-export default ContactUs;

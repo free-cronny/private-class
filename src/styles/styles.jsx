@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Input = styled.input`
     border-radius: 10px;
     width: 20rem;
-    height: 3.25rem;
+    height: ${(props) => props.height || '3.25rem'};
     background: #161688 ;
     border: 3px solid transparent;
     box-sizing: border-box;
@@ -16,6 +16,9 @@ export const Input = styled.input`
         color: #A8A8A8;
         padding-left: 15px;
     }
+
+
+    transition: ${(props) => props.Transition || 'height 0.0s'};
 
      @media (max-width: 768px) {
         width: 100%;
@@ -34,9 +37,10 @@ export const Button = styled.button`
     font-weight: 400;
     line-height: normal;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
     
     &:hover{
-       background: ${(props) => props.BackgroundHover || '#090A63' }
+       background: ${(props) => props.BackgroundHover || '#090A63'}
     }
 
     cursor: pointer;
@@ -66,3 +70,26 @@ export const Select = styled.select`
     width: 100%;
   }
 `;
+
+export const TextArea = styled.textarea`
+border-radius: 10px;
+width: 25rem;
+height: ${(props) => props.height || '8.25rem'};
+background: #161688 ;
+border: 3px solid transparent;
+box-sizing: border-box;
+font-size: 1rem;
+line-height: 1.5;
+color: white;
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+&::placeholder {
+    color: #A8A8A8;
+    padding-left: 15px;
+}
+
+transition: ${(props) => props.Transition || 'height 0.0s'};
+
+ @media (max-width: 768px) {
+    width: 100%;
+ }
+`

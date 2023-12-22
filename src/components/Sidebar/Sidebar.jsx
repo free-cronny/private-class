@@ -106,7 +106,7 @@ const Sidebar = () => {
     {
       id: 3,
       name: "Fale Conosco",
-      route: "/contato",
+      route: "/contactus",
       icon: <MdOutlineEmail />,
     },
     {
@@ -164,6 +164,7 @@ const Sidebar = () => {
                   e.preventDefault();
                   setActiveRoute(route.route);
                   route.onClick && route.onClick();
+                  window.location.href = `${route.route}`;
                 }}
                 style={{ borderBottom: route.route === activeRoute ? "3px solid #fff" : "none" }}
               >

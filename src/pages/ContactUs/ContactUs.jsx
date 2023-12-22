@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import * as S from './styles';
+import * as G from '../../styles/styles'
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
@@ -76,7 +77,7 @@ export const ContactUs = () => {
 
 
 
-        <S.Container>
+        <G.Container>
             {sidebarOpen && <Sidebar />}
 
             {isOnDesktop === false && (
@@ -118,7 +119,7 @@ export const ContactUs = () => {
                 <Button onClick={sendMessage} Text='Enviar'></Button>
                 </S.ContainerDif>
             </S.ContainerWaMessage>
-        </S.Container>
+        </G.Container>
 
 
     )

@@ -150,7 +150,8 @@ const Sidebar = () => {
       <S.SidebarWrapper>
         <S.SidebarHeader>
          <p>Kyops</p> 
-         <span style={{marginTop: 15}}>Bem vindo(a): {user && userLoggedInfo ? userLoggedInfo.name : 'Usuário'}</span>
+         <span style={{marginTop: 15}}>Bem vindo(a):</span>
+         <h6 style={{marginTop: 15, borderBottom: '1px solid #fff'}}>{user && userLoggedInfo ? userLoggedInfo.name : 'Usuário'}</h6>
         </S.SidebarHeader>
         <S.SidebarMenu>
           {routes.map((route) => (

@@ -86,20 +86,22 @@ const waSendMessage = () => {
             <S.ContainerWaMessage>
                 <S.ContainerDif>
                     <h1>Contate-nos</h1>
-                <S.InputsWa>
-                    <label>Nome:</label>
-                    <Input
-                        type='name'
-                        placeholder='Digite seu nome'
-                    />
-                </S.InputsWa>
-                <S.InputsWa>
-                    <label>Email:</label>
-                    <Input
-                        type='email'
-                        placeholder='Digite seu email'
-                    />
-                </S.InputsWa>
+                <S.InputsContainer>
+                    <S.InputsWa>
+                        <label>Nome:</label>
+                        <Input
+                            type='name'
+                            placeholder='Digite seu nome'
+                        />
+                    </S.InputsWa>
+                    <S.InputsWa>
+                        <label>Email:</label>
+                        <Input
+                            type='email'
+                            placeholder='Digite seu email'
+                        />
+                    </S.InputsWa>
+                </S.InputsContainer>
                 <S.InputMessage>
                     <label  htmlFor="message">Mensagem:</label>
                     <TextArea

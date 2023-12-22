@@ -49,7 +49,7 @@ export const LoginPage = () => {
   ];
 
   if (isAuthenticated) {
-    return <Navigate to="/Home" />;
+    return <Navigate to="/home" />;
   }
 
   const auth = getAuth();

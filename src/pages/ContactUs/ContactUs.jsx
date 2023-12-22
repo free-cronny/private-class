@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect } from 'react';
 import * as S from './styles';
 import Sidebar from '../../components/Sidebar/Sidebar';

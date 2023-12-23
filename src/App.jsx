@@ -5,6 +5,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import {ContactUs} from "./pages/ContactUs/ContactUs"
 import useAuthStore from "./utils/store";
 import { Users } from "./pages/Users/Users";
+import { Register } from "./pages/Register/Register";
 function App() {
   
   const { isAuthenticated } = useAuthStore(); // retorna informações se existir como TRUE
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>      
       <Routes>
           <Route path="/" element={<LoginPage/>}/>
+          <Route path="/register" element={<Register/>}/>
           <Route path="/home" element={isAuthenticated ? <Home/> : <LoginPage/>}/>
           <Route path="/usuarios" element={isAuthenticated ? <Users/> : <LoginPage/>}/>
           <Route path="/contactus" element={isAuthenticated ?<ContactUs/> : <LoginPage/>}/>

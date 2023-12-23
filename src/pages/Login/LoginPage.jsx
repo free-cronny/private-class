@@ -12,7 +12,6 @@ import { Navigate } from 'react-router-dom';
 
 import {
   getAuth,
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
@@ -20,10 +19,10 @@ import {
 import SelectComponent from '../../components/Select/Select'
 import InputComponent from "../../components/Input/Input";
 import Loading from "../../components/Loading/loading";
-
+import Register from "../../pages/Register/Register";
+import { Link } from 'react-router-dom';
 
 import BackgroundImageRight from "../../assets/images/backgroundimagelogin.jpg";
-
 
 
 import * as S from "./styles"; // Importação dos estilos locais (S.NOME)
@@ -31,22 +30,19 @@ import * as S from "./styles"; // Importação dos estilos locais (S.NOME)
 import useAuthStore from "../../utils/store"; // Store ( variaveis globais )
 import Swal from "sweetalert2";
 
+
 export const LoginPage = () => {
 
 
-  const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState(""); // Manipulação de [variavel, função para mudar]
   const [password, setPassword] = useState("");
-  const [selectedTypeUser, setSelectedTypeUser] = useState(true);
+  const [redirect, setRedirect] = useState(false);
+
+
 
 
   const [loading, setLoading] = useState(false)
   const { isAuthenticated, setAuthenticated } = useAuthStore(); // Puxando de dentro da store a variavel de isAuthenticated(booleano)
-
-  const options = [
-    { value: true, label: 'Estudante' },
-    { value: false, label: 'Professor' },
-  ];
 
   if (isAuthenticated) {
     return <Navigate to="/home" />;
@@ -54,41 +50,6 @@ export const LoginPage = () => {
 
   const auth = getAuth();
 
-
-  const createUsers = async () => {
-    try {
-      setLoading(true);
-      const userVerified = await createUserWithEmailAndPassword(auth, email, password);
-      Swal.fire({
-        icon: "success",
-        title: "Usuário cadastrado com sucesso!",
-        showConfirmButton: false,
-        timer: 1500
-      });
-      // Adiciona informações adicionais no Realtime Database
-      const db = getDatabase();
-      const userRef = ref(db, `users/${userVerified.user.uid}`);
-      set(userRef, {
-        id: 0,
-        email: userVerified.user.email,
-        name: nickname,
-        isStudent: selectedTypeUser,
-        messages: []
-      });
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Algo deu errado!",
-        footer: `${errorCode, errorMessage}`
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleForgotPassword = () => {
     sendPasswordResetEmail(auth, email)
@@ -106,8 +67,6 @@ export const LoginPage = () => {
         });
       });
   };
-  
-  
 
 
   const loginUser = async () => {
@@ -124,6 +83,8 @@ export const LoginPage = () => {
       const user = userLogin.user;
       console.log(user);
       setEmail(email);
+
+      setRedirect(true);
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -154,27 +115,13 @@ export const LoginPage = () => {
             placeholder="Digite seu Email"
           />
           <InputComponent
-            onChange={(event) => setNickname(event.target.value)} // Adicione isso
-            type="text" // Use o tipo "text" para o campo de nickname
-            placeholder="Digite seu Nickname"
-          />
-          <InputComponent
             onChange={(event) => {
               setPassword(event.target.value)
             }}
             type="Password"
             placeholder="Digite sua Senha"
           />
-
-<SelectComponent
-        onChange={(e) => setSelectedTypeUser(e.target.value)}
-        type="select"
-        placeholder="Selecione uma opção"
-        value={selectedTypeUser}
-        options={options}
-      />
-          
-          <p style={{color: 'blue', cursor: 'pointer'}} onClick={handleForgotPassword}>Esqueceu sua senha?</p>
+          <p style={{ color: 'blue', cursor: 'pointer' }} onClick={handleForgotPassword}>Esqueceu sua senha?</p>
           <S.ButtonsLog>
             <ButtonComponent
               Text={loading ? (<Loading />) : "LOGIN"}
@@ -184,14 +131,17 @@ export const LoginPage = () => {
               BackgroundHover="#3F4093"
               onClick={loginUser}
             />
-            <ButtonComponent
-              Text={loading ? (<Loading />) : "Cadastrar-se"}
-              PaddingButton="0.55rem 1.55rem"
-              BackgroundColor="#706E64"
-              MarginButton="15px 0 0 0"
-              BackgroundHover="#D7B231"
-              onClick={createUsers}
-            />
+            <div>
+            <Link to='/register'>
+              <ButtonComponent
+                Text={loading ? (<Loading />) : "Cadastrar-se"}
+                PaddingButton="0.55rem 1.55rem"
+                BackgroundColor="#706E64"
+                MarginButton="15px 0 0 0"
+                BackgroundHover="#D7B231"
+              />
+            </Link>
+            </div>
           </S.ButtonsLog>
         </S.ContainerLogin>
       </S.ContainerLeft>

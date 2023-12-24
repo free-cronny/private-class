@@ -50,7 +50,7 @@ export const ContainerLeft = styled.div`
 
     a{
         width: 9rem;  
-        margin-left: 10rem;
+        margin-left: 0rem;
         font-size: 0.9rem;
         text-decoration: none;
         color: #1468CB;

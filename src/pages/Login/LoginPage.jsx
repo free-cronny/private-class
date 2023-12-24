@@ -51,6 +51,10 @@ export const LoginPage = () => {
   const auth = getAuth();
 
 
+  const irPage = () =>{
+    window.location.href = '/register'
+  }
+
   const handleForgotPassword = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
@@ -131,17 +135,14 @@ export const LoginPage = () => {
               BackgroundHover="#3F4093"
               onClick={loginUser}
             />
-            <div>
-            <Link to='/register'>
               <ButtonComponent
                 Text={loading ? (<Loading />) : "Cadastrar-se"}
                 PaddingButton="0.55rem 1.55rem"
                 BackgroundColor="#706E64"
                 MarginButton="15px 0 0 0"
                 BackgroundHover="#D7B231"
+                onClick={irPage}
               />
-            </Link>
-            </div>
           </S.ButtonsLog>
         </S.ContainerLogin>
       </S.ContainerLeft>

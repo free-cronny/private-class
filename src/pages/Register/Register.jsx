@@ -111,6 +111,7 @@ export const Register = () => {
                         value={selectedTypeUser}
                         options={options}
                     />
+                    
                     <S.ButtonsLog>
                         <ButtonComponent
                             Text={loading ? (<Loading />) : "Cadastrar-se"}
@@ -122,6 +123,7 @@ export const Register = () => {
 
                         />
                     </S.ButtonsLog>
+                    <a href="/">Já possui uma conta? Clique aqui.</a>
                 </S.ContainerLogin>
             </S.ContainerLeft>
         </S.Container>
